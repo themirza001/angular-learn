@@ -16,12 +16,8 @@ export class UserComponent {
   @Input({ required: true }) name!: string
 
   // setting up a output value that can be accesses wuth same in parent compoent
-  // @Output() selectUser = new EventEmitter();
+  @Output() selectUser = new EventEmitter<string>();
 
-  //using output function in place of output decorator to pass the data
-  selectUser = output<string>();
-
-  //always use computed with using signals, as it gets evaluated only when signal changes,make it efficient 
   get imagePath() {
     return "./../assets/users/" + this.avatar
   }
