@@ -1,4 +1,4 @@
-import { Component, computed, signal, Input, input, Output, EventEmitter } from '@angular/core';
+import { Component, computed, signal, Input, input, Output, EventEmitter, output } from '@angular/core';
 import { DUMMY_USERS } from "./../dummy-users"
 
 
@@ -16,7 +16,10 @@ export class UserComponent {
   @Input({ required: true }) name!: string
 
   // setting up a output value that can be accesses wuth same in parent compoent
-  @Output() selectUser = new EventEmitter();
+  // @Output() selectUser = new EventEmitter();
+
+  //using output function in place of output decorator to pass the data
+  selectUser = output<string>();
 
   //always use computed with using signals, as it gets evaluated only when signal changes,make it efficient 
   get imagePath() {
