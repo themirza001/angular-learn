@@ -10,10 +10,10 @@
     }
   </ul>
 
-  @if(selectedUserName){
-  <app-task [selectedUserName]="selectedUserName"></app-task>
+  @if(selectedUserId){
+  <app-tasks [selectedUserId]="selectedUserId"></app-tasks>
   }@else{
-  <p id="fallback">Select a User to see there name</p>
+  <p id="fallback">Select a User to see there Task</p>
   }
 
 

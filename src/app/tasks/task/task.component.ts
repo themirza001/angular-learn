@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { Task } from './task.model';
+
 @Component({
   selector: 'app-task',
   standalone: true,
@@ -8,5 +10,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
-  @Input({ required: true }) selectedUserName!: string
+  @Input({ required: true }) task!: Task
+
 }

@@ -1,11 +1,7 @@
 import { Component, computed, signal, Input, input, Output, EventEmitter, output } from '@angular/core';
 import { DUMMY_USERS } from "./../dummy-users"
 
-interface User {
-  name: string;
-  id: string;
-  avatar: string;
-}
+import { User } from "./user.model"
 
 
 @Component({
