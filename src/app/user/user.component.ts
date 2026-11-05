@@ -1,6 +1,12 @@
 import { Component, computed, signal, Input, input, Output, EventEmitter, output } from '@angular/core';
 import { DUMMY_USERS } from "./../dummy-users"
 
+interface User {
+  name: string;
+  id: string;
+  avatar: string;
+}
+
 
 @Component({
   selector: 'app-user',
@@ -11,11 +17,7 @@ import { DUMMY_USERS } from "./../dummy-users"
 })
 export class UserComponent {
 
-  @Input({ required: true }) user!: {
-    id: string;
-    name: string;
-    avatar: string;
-  }
+  @Input({ required: true }) user!: User;
 
   // setting up a output value that can be accesses wuth same in parent compoent
   @Output() selectUser = new EventEmitter<string>();
