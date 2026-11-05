@@ -11,19 +11,21 @@ import { DUMMY_USERS } from "./../dummy-users"
 })
 export class UserComponent {
 
-  @Input({ required: true }) id!: string
-  @Input({ required: true }) avatar!: string
-  @Input({ required: true }) name!: string
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  }
 
   // setting up a output value that can be accesses wuth same in parent compoent
   @Output() selectUser = new EventEmitter<string>();
 
   get imagePath() {
-    return "./../assets/users/" + this.avatar
+    return "./../assets/users/" + this.user.avatar
   }
 
   onSelectUser() {
-    this.selectUser.emit(this.id)
+    this.selectUser.emit(this.user.id)
   }
 
 }

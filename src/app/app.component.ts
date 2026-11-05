@@ -12,8 +12,8 @@ import { TaskComponent } from './task/task.component';
 })
 export class AppComponent {
   users = DUMMY_USERS
-  selectedUserName!: string | undefined
+  selectedUserName!: string
   onSelectUser(id: string) {
-    this.selectedUserName = this.users.find((user) => user.id === id)?.name
+    this.selectedUserName = this.users.find((user) => user.id === id)?.name ?? ""
   }
 }
