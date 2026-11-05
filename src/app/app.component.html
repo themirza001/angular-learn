@@ -2,29 +2,19 @@
 <main>
   <ul id="users">
     <!-- using for loop to render all the list users -->
-    <!-- @for(user of users;track user.id){
-    <li> -->
-    <!-- we can pass the input to custom and take output from custom the name should be same in both places,and whatever value we emit from there, here we can collect it in $event -->
-    <!-- <app-user [user]="user" (selectUser)="onSelectUser($event)" />
-    </li>
-    } -->
-
-    <li *ngFor="let user of users">
+    @for(user of users;track user.id){
+    <li>
       <!-- we can pass the input to custom and take output from custom the name should be same in both places,and whatever value we emit from there, here we can collect it in $event -->
       <app-user [user]="user" (selectUser)="onSelectUser($event)" />
     </li>
-
+    }
   </ul>
 
-  <!-- @if(selectedUserName){
+  @if(selectedUserName){
   <app-task [selectedUserName]="selectedUserName"></app-task>
   }@else{
   <p id="fallback">Select a User to see there name</p>
-  } -->
+  }
 
-  <app-task *ngIf="selectedUserName;else myFallback" [selectedUserName]="selectedUserName"></app-task>
-  <ng-template #myFallback>
-    <p id="fallback">Select a User to see there name</p>
-  </ng-template>
 
 </main>
