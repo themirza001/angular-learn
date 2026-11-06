@@ -29,4 +29,14 @@ export class TasksComponent {
     this.tasks = this.tasks.filter(task => task.id !== taskId)
   }
 
+  handleTaskCreation() {
+    DUMMY_TASKS.push({
+      id: "u" + DUMMY_TASKS.length,
+      userId: this.selectedUserId,
+      title: "This is a new Task",
+      summary: "i am adding a new Task",
+      dueDate: "12-12-2022",
+    })
+  }
+
 }

@@ -2,7 +2,7 @@
     <header>
         <h2>{{selectedUserName}}'s Tasks</h2>
         <menu>
-            <button>Add Task</button>
+            <button (click)="handleTaskCreation()">Add Task</button>
         </menu>
     </header>
 
@@ -12,5 +12,7 @@
             <app-task [task]="task" (completedTaskId)="onTaskCompletion($event)"></app-task>
         </li>
         }
+
+        
     </ul>
 </section>
