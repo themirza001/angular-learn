@@ -14,9 +14,11 @@ import { User } from "./user.model"
 export class UserComponent {
 
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) isSelected!: boolean;
 
   // setting up a output value that can be accesses wuth same in parent compoent
   @Output() selectUser = new EventEmitter<string>();
+
 
   get imagePath() {
     return "./../assets/users/" + this.user.avatar
