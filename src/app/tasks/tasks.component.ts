@@ -3,11 +3,12 @@ import { TaskComponent } from './task/task.component';
 import { DUMMY_TASKS } from '../dummy-tasks';
 import { DUMMY_USERS } from '../dummy-users';
 import { Task } from './task/task.model';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -15,6 +16,7 @@ export class TasksComponent {
   @Input({ required: true }) selectedUserId!: string
   users = DUMMY_USERS;
   tasks: Task[] = DUMMY_TASKS;
+  isAddingTask: boolean = false;
 
   get selectedUserName(): string | undefined {
     const user = this.users.find((u) => u.id === this.selectedUserId);
@@ -30,13 +32,10 @@ export class TasksComponent {
   }
 
   handleTaskCreation() {
-    DUMMY_TASKS.push({
-      id: "u" + DUMMY_TASKS.length,
-      userId: this.selectedUserId,
-      title: "This is a new Task",
-      summary: "i am adding a new Task",
-      dueDate: "12-12-2022",
-    })
+    this.isAddingTask = true
   }
 
+  handleNewTaskDialogClose() {
+    this.isAddingTask = false
+  }
 }

@@ -1,3 +1,6 @@
+@if(isAddingTask){
+<app-new-task (closeNewTaskDialog)="handleNewTaskDialogClose()"></app-new-task>
+}
 <section id="tasks">
     <header>
         <h2>{{selectedUserName}}'s Tasks</h2>
@@ -13,6 +16,6 @@
         </li>
         }
 
-        
+
     </ul>
 </section>
