@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { DUMMY_TASKS } from '../dummy-tasks';
 import { DUMMY_USERS } from '../dummy-users';
-import { Task } from './task/task.model';
+import { Task, NewTask } from './task/task.model';
 import { NewTaskComponent } from './new-task/new-task.component';
-
+import { TasksService } from './tasks.service';
 @Component({
   selector: 'app-tasks',
   standalone: true,
@@ -17,6 +17,7 @@ export class TasksComponent {
   users = DUMMY_USERS;
   tasks: Task[] = DUMMY_TASKS;
   isAddingTask: boolean = false;
+  private tasksService: TasksService = new TasksService();
 
   get selectedUserName(): string | undefined {
     const user = this.users.find((u) => u.id === this.selectedUserId);
@@ -24,11 +25,11 @@ export class TasksComponent {
   }
 
   get currUserTasks(): Task[] {
-    return this.tasks.filter((task) => task.userId === this.selectedUserId);
+    return this.tasksService.getUserTasks(this.selectedUserId);
   }
 
   onTaskCompletion(taskId: string) {
-    this.tasks = this.tasks.filter(task => task.id !== taskId)
+    this.tasksService.removeTask(taskId)
   }
 
   handleTaskCreation() {
@@ -39,14 +40,9 @@ export class TasksComponent {
     this.isAddingTask = false
   }
 
-  handleTaskAdditon(newTask: { title: string; summary: string; dueDate: string }) {
-    this.tasks = [{ ...newTask, id: "u" + this.tasks.length, userId: this.selectedUserId }, ...this.tasks];
-
-    // (Optional) If you also want it in DUMMY_TASKS globally:
-    DUMMY_TASKS.unshift({ ...newTask, id: "u" + this.tasks.length, userId: this.selectedUserId });
-
+  handleTaskAdditon(newTask: NewTask) {
+    this.tasksService.addNewTask(newTask, this.selectedUserId)
     this.handleNewTaskDialogClose();
-
   }
 
 }

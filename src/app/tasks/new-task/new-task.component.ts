@@ -1,6 +1,6 @@
 import { Component, EventEmitter, NgModule, Output, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Task } from '../task/task.model';
+import { NewTask } from '../task/task.model';
 import { DUMMY_TASKS } from '../../dummy-tasks';
 @Component({
   selector: 'app-new-task',
@@ -11,7 +11,7 @@ import { DUMMY_TASKS } from '../../dummy-tasks';
 })
 export class NewTaskComponent {
   @Output() closeNewTaskDialog = new EventEmitter();
-  @Output() newTask = new EventEmitter<{ title: string; summary: string; dueDate: string }>();
+  @Output() newTask = new EventEmitter<NewTask>();
 
   enteredTitle: string = "";
   enteredSummary: string = "";
