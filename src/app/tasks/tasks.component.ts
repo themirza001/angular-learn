@@ -17,7 +17,11 @@ export class TasksComponent {
   users = DUMMY_USERS;
   tasks: Task[] = DUMMY_TASKS;
   isAddingTask: boolean = false;
-  private tasksService: TasksService = new TasksService();
+  private tasksService: TasksService;
+
+  constructor(tasksService: TasksService) {
+    this.tasksService = tasksService;
+  }
 
   get selectedUserName(): string | undefined {
     const user = this.users.find((u) => u.id === this.selectedUserId);
