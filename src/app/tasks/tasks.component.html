@@ -1,5 +1,5 @@
 @if(isAddingTask){
-<app-new-task (closeNewTaskDialog)="handleNewTaskDialogClose()"></app-new-task>
+<app-new-task (closeNewTaskDialog)="handleNewTaskDialogClose()" (newTask)="handleTaskAdditon($event)"></app-new-task>
 }
 <section id="tasks">
     <header>

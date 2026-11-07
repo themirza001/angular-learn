@@ -38,4 +38,15 @@ export class TasksComponent {
   handleNewTaskDialogClose() {
     this.isAddingTask = false
   }
+
+  handleTaskAdditon(newTask: { title: string; summary: string; dueDate: string }) {
+    this.tasks = [{ ...newTask, id: "u" + this.tasks.length, userId: this.selectedUserId }, ...this.tasks];
+
+    // (Optional) If you also want it in DUMMY_TASKS globally:
+    DUMMY_TASKS.unshift({ ...newTask, id: "u" + this.tasks.length, userId: this.selectedUserId });
+
+    this.handleNewTaskDialogClose();
+
+  }
+
 }
