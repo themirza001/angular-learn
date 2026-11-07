@@ -1,5 +1,5 @@
 @if(isAddingTask){
-<app-new-task (closeNewTaskDialog)="handleNewTaskDialogClose()" (newTask)="handleTaskAdditon($event)"></app-new-task>
+<app-new-task [userId]="selectedUserId" (closeNewTaskDialog)="handleNewTaskDialogClose()"></app-new-task>
 }
 <section id="tasks">
     <header>
