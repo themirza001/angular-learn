@@ -15,7 +15,6 @@ import { TasksService } from './tasks.service';
 export class TasksComponent {
   @Input({ required: true }) selectedUserId!: string
   users = DUMMY_USERS;
-  tasks: Task[] = DUMMY_TASKS;
   isAddingTask: boolean = false;
   private tasksService: TasksService;
 
@@ -32,9 +31,6 @@ export class TasksComponent {
     return this.tasksService.getUserTasks(this.selectedUserId);
   }
 
-  onTaskCompletion(taskId: string) {
-    this.tasksService.removeTask(taskId)
-  }
 
   handleTaskCreation() {
     this.isAddingTask = true
